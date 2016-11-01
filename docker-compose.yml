@@ -1,7 +1,7 @@
 version: '2'
 services:
   mysql:
-    image: mysql:5.7.16
+    image: ilopmar/mufly-mysql:5.5.53
     environment:
       - "MYSQL_DATABASE=mufly"
       - "MYSQL_USER=mufly"
@@ -10,7 +10,7 @@ services:
     volumes:
       - "$MUFLY_HOME/mysql:/docker-entrypoint-initdb.d"
   tomcat:
-    image: tomcat:6.0.47-jre7
+    image: ilopmar/mufly-tomcat:6.0.47-jre7
     depends_on:
       - mysql
     links:
