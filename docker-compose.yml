@@ -1,0 +1,21 @@
+version: '2'
+services:
+  mysql:
+    image: mysql:5.7.16
+    environment:
+      - "MYSQL_DATABASE=mufly"
+      - "MYSQL_USER=mufly"
+      - "MYSQL_PASSWORD=mufly"
+      - "MYSQL_ROOT_PASSWORD=root"
+    volumes:
+      - "$MUFLY_HOME/mysql:/docker-entrypoint-initdb.d"
+  tomcat:
+    image: tomcat:6.0.47-jre7
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+    volumes:
+      - "$MUFLY_HOME/tomcat:/usr/local/tomcat/webapps"
+    ports:
+      - "8080:8080"
