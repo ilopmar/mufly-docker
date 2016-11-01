@@ -1,2 +1,2 @@
 #!/bin/bash
-mysqldump -uroot -proot mufly -r Mufly_PROD_`date +%Y%m%d_%H%M`.sql
+mysqldump -uroot -proot mufly -r /docker-entrypoint-initdb.d/Mufly_PROD_`date +%Y%m%d_%H%M`.sql
