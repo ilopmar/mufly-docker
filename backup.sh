@@ -1,2 +1,3 @@
 #!/bin/bash
-docker exec -it mufly_mysql_1 "/docker-entrypoint-initdb.d/backup"
+MYSQL_CONTAINER=`docker ps --format '{{.Names}}' | grep mufly_mysql`
+docker exec -it $MYSQL_CONTAINER "/docker-entrypoint-initdb.d/backup"
